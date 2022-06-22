@@ -1,7 +1,16 @@
 import { useState } from "react"
-import { Todo } from "../App"
 
-const InputElement = ({ updateTodos }) => {
+export interface Todo {
+    id: number
+    text: string
+    completed: boolean
+}
+
+interface UpdateTodos {
+    updateTodos: (newTodo: Todo) => void
+}
+
+const InputElement = ({ updateTodos }: UpdateTodos) => {
     const [inputValue, setInputValue] = useState("")
 
     const addTodo = () => {
@@ -16,7 +25,7 @@ const InputElement = ({ updateTodos }) => {
 
     return (
         <>
-            <input type="text" onChange={(event) => setInputValue(event.target.value)} value={inputValue}/>
+            <input type="text" onChange={(event) => setInputValue(event.target.value)} value={inputValue} />
             <button onClick={() => addTodo()}>Add todo</button>
         </>
     )
