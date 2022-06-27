@@ -1,6 +1,13 @@
 import "../App.css"
+import { Todo } from "../types/Todo"
 
-const TodoElement = ({ todo, deleteTodo, markDone }) => {
+interface TodoItemProps {
+    todo: Todo;
+    deleteTodo: (id: number) => void,
+    markDone: (id: number) => void
+}
+
+const TodoItem = ({ todo, deleteTodo, markDone }: TodoItemProps) => {
     const deleteItem = () => {
         deleteTodo(todo.id)
     }
@@ -19,4 +26,4 @@ const TodoElement = ({ todo, deleteTodo, markDone }) => {
         </div>)
 }
 
-export default TodoElement
+export default TodoItem

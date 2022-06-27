@@ -1,16 +1,13 @@
 import { useState } from "react"
+import { Todo } from "../types/Todo"
 
-export interface Todo {
-    id: number
-    text: string
-    completed: boolean
-}
 
-interface UpdateTodos {
+interface InputElementProps {
     updateTodos: (newTodo: Todo) => void
+    blah?: string
 }
 
-const InputElement = ({ updateTodos }: UpdateTodos) => {
+const InputElement = ({ updateTodos }: InputElementProps) => {
     const [inputValue, setInputValue] = useState("")
 
     const addTodo = () => {

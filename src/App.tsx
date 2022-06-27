@@ -1,11 +1,10 @@
 import InputElement from "./components/InputElement"
 import TodoRendering from "./components/TodoRendering"
 import { useState } from "react"
-import { Todo } from "./components/InputElement"
+import { Todo } from "./types/Todo"
 import "./App.css"
 
 const App = () => {
-  // What are we actually typing here?
   const [todos, setTodos] = useState<Todo[]>([])
 
   const updateTodos = (newTodo: Todo): void => {
@@ -26,14 +25,14 @@ const App = () => {
   }
 
   return (
-    <>
+    <div className="container">
       <InputElement updateTodos={updateTodos} />
       <TodoRendering
         todos={todos}
         deleteTodo={deleteTodo}
         markDone={markDone}
       />
-    </>
+    </div>
   )
 }
 
