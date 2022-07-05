@@ -4,14 +4,8 @@ import { useState } from "react"
 import React from "react"
 import { useAppSelector, useAppDispatch } from "../types/hooks"
 
-
-interface TodoRendenringProps {
-  todos: Todo[],
-  deleteTodo: (id: string) => void,
-  markDone: (id: string) => void,
-}
-
-const TodoRendering = ({ todos, deleteTodo, markDone }: TodoRendenringProps) => {
+const TodoRendering = () => {
+  const todos = useAppSelector(state => state.todos.todos)
   const [filterMode, setFilterMode] = useState<string>("all")
 
   const showUndone = () => {
@@ -42,8 +36,6 @@ const TodoRendering = ({ todos, deleteTodo, markDone }: TodoRendenringProps) => 
       {filteredTodos.map((todo: Todo) => {
         return <TodoElement
           todo={todo}
-          deleteTodo={deleteTodo}
-          markDone={markDone}
           key={todo.id} />
       })}
       <div className="filters">

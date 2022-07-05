@@ -1,20 +1,23 @@
 import "../App.css"
 import { Todo } from "../types/Todo"
+import React from "react"
+import { useAppSelector, useAppDispatch } from "../types/hooks"
+import { removeTodo, toggleTodo } from "../redux/todoReducer"
+
 
 interface TodoItemProps {
     todo: Todo
-    deleteTodo: (id: string) => void,
-    markDone: (id: string) => void
 }
 
-const TodoItem = ({ todo, deleteTodo, markDone }: TodoItemProps) => {
+const TodoItem = ({ todo }: TodoItemProps) => {
+    const dispatch = useAppDispatch()
 
     const deleteItem = () => {
-        deleteTodo(todo.id)
+        dispatch(removeTodo(todo.id))
     }
 
-    const toggleTodo = () => {
-        markDone(todo.id)
+    const toggleTodoEl = () => {
+        dispatch(toggleTodo(todo.id))
     }
 
     const className = todo.completed ? "done" : ""
@@ -22,7 +25,7 @@ const TodoItem = ({ todo, deleteTodo, markDone }: TodoItemProps) => {
     return (
         <div>
             <span className={className}>{todo.text}</span>
-            <input type="checkbox" checked={todo.completed} onClick={() => toggleTodo()}></input>
+            <input type="checkbox" checked={todo.completed} onClick={() => toggleTodoEl()}></input>
             <button onClick={() => deleteItem()}>Delete</button>
         </div>)
 }
