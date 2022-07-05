@@ -2,12 +2,13 @@ import "../App.css"
 import { Todo } from "../types/Todo"
 
 interface TodoItemProps {
-    todo: Todo;
-    deleteTodo: (id: number) => void,
-    markDone: (id: number) => void
+    todo: Todo
+    deleteTodo: (id: string) => void,
+    markDone: (id: string) => void
 }
 
 const TodoItem = ({ todo, deleteTodo, markDone }: TodoItemProps) => {
+
     const deleteItem = () => {
         deleteTodo(todo.id)
     }

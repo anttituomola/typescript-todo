@@ -3,19 +3,16 @@ import TodoRendering from "./components/TodoRendering"
 import { useState } from "react"
 import { Todo } from "./types/Todo"
 import "./App.css"
+import React from "react"
 
 const App = () => {
   const [todos, setTodos] = useState<Todo[]>([])
 
-  const updateTodos = (newTodo: Todo): void => {
-    setTodos([...todos, newTodo])
-  }
-
-  const deleteTodo = (id: number): void => {
+  const deleteTodo = (id: string): void => {
     setTodos(todos.filter((todo) => todo.id !== id))
   }
 
-  const markDone = (id: number): void => {
+  const markDone = (id: string): void => {
     setTodos(todos.map((todo) => {
       if (todo.id === id) {
         todo.completed = !todo.completed
@@ -26,7 +23,7 @@ const App = () => {
 
   return (
     <div className="container">
-      <InputElement updateTodos={updateTodos} />
+      <InputElement />
       <TodoRendering
         todos={todos}
         deleteTodo={deleteTodo}

@@ -1,28 +1,28 @@
 import { Todo } from "../types/Todo"
 import TodoElement from "./TodoItem"
 import { useState } from "react"
+import React from "react"
+import { useAppSelector, useAppDispatch } from "../types/hooks"
+
 
 interface TodoRendenringProps {
   todos: Todo[],
-  deleteTodo: (id: number) => void,
-  markDone: (id: number) => void,
+  deleteTodo: (id: string) => void,
+  markDone: (id: string) => void,
 }
 
 const TodoRendering = ({ todos, deleteTodo, markDone }: TodoRendenringProps) => {
   const [filterMode, setFilterMode] = useState<string>("all")
 
   const showUndone = () => {
-    console.log("showUndoneTodos")
     setFilterMode("active")
   }
 
   const showDone = () => {
-    console.log("showDoneTodos")
     setFilterMode("completed")
   }
 
   const showAll = () => {
-    console.log("showAllTodos")
     setFilterMode("all")
   }
 
@@ -34,8 +34,8 @@ const TodoRendering = ({ todos, deleteTodo, markDone }: TodoRendenringProps) => 
     } else if (filterMode === 'completed') {
       return todo.completed
     }
+   return todo 
   })
-
 
   return (
     <div>

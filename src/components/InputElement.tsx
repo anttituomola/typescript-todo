@@ -1,29 +1,25 @@
-import { useState } from "react"
 import { Todo } from "../types/Todo"
+import React, { useState } from "react"
+import { useAppSelector, useAppDispatch } from "../types/hooks"
+import { addTodo } from "../redux/todoReducer"
 
 
-interface InputElementProps {
-    updateTodos: (newTodo: Todo) => void
-    blah?: string
-}
-
-const InputElement = ({ updateTodos }: InputElementProps) => {
+const InputElement = () => {
     const [inputValue, setInputValue] = useState("")
+    const todos = useAppSelector(state => state.todos)
+    const dispatch = useAppDispatch()
 
-    const addTodo = () => {
-        const aTodo: Todo = {
-            id: Date.now(),
-            text: inputValue,
-            completed: false
+    const addTodoEl = () => {
+        if (inputValue) {
+            dispatch(addTodo(inputValue))
         }
-        updateTodos(aTodo)
         setInputValue("")
     }
 
     return (
         <>
             <input type="text" onChange={(event) => setInputValue(event.target.value)} value={inputValue} />
-            <button onClick={() => addTodo()}>Add todo</button>
+            <button onClick={() => addTodoEl()}>Add todo</button>
         </>
     )
 }
