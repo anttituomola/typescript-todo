@@ -1,4 +1,3 @@
-import { Todo } from "../types/Todo"
 import React, { useState } from "react"
 import { useAppSelector, useAppDispatch } from "../types/hooks"
 import { addTodo } from "../redux/todoReducer"

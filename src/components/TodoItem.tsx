@@ -1,7 +1,7 @@
 import "../App.css"
 import { Todo } from "../types/Todo"
 import React from "react"
-import { useAppSelector, useAppDispatch } from "../types/hooks"
+import { useAppDispatch } from "../types/hooks"
 import { removeTodo, toggleTodo } from "../redux/todoReducer"
 
 

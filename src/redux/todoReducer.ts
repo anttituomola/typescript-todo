@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../store'
 import cuid from 'cuid'
 import { Todo } from '../types/Todo'
 
