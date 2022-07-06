@@ -36,8 +36,7 @@ export const todoSlice = createSlice({
                         todo.completed = !todo.completed
                     }
                     return todo
-                }
-                )
+                })
             }
         } 
     }

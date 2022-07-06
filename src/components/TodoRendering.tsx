@@ -3,29 +3,30 @@ import TodoElement from "./TodoItem"
 import { useState } from "react"
 import React from "react"
 import { useAppSelector, useAppDispatch } from "../types/hooks"
+import FilterMode from "../types/FilterMode"
 
 const TodoRendering = () => {
   const todos = useAppSelector(state => state.todos.todos)
-  const [filterMode, setFilterMode] = useState<string>("all")
+  const [filterMode, setFilterMode] = useState<FilterMode>(FilterMode.all)
 
   const showUndone = () => {
-    setFilterMode("active")
+    setFilterMode(FilterMode.active)
   }
 
   const showDone = () => {
-    setFilterMode("completed")
+    setFilterMode(FilterMode.completed)
   }
 
   const showAll = () => {
-    setFilterMode("all")
+    setFilterMode(FilterMode.all)
   }
 
   const filteredTodos: Todo[] = todos.filter(todo => {
-    if (filterMode === 'all') {
+    if (filterMode === FilterMode.all) {
       return true
-    } else if (filterMode === 'active') {
+    } else if (filterMode === FilterMode.active) {
       return !todo.completed
-    } else if (filterMode === 'completed') {
+    } else if (filterMode === FilterMode.completed) {
       return todo.completed
     }
    return todo 

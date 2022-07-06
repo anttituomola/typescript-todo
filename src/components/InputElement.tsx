@@ -8,7 +8,7 @@ const InputElement = () => {
     const todos = useAppSelector(state => state.todos)
     const dispatch = useAppDispatch()
 
-    const addTodoEl = () => {
+    const addTodoEl = () => { // "shadowing"
         if (inputValue) {
             dispatch(addTodo(inputValue))
         }
